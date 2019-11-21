@@ -1,0 +1,11 @@
+@import "../../styles/abstracts/functions";
+
+.homepage {
+  &-container {
+    background-image: url("../../assets/images/homepage.jpg");
+    background-size: cover;
+    height: 100%;
+    box-sizing: border-box;
+    padding: compute-pixel(2);
+  }
+}

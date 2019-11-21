@@ -1,0 +1,7 @@
+<div class="homepage-container">
+  <!-- <app-weather-summary-bar [currentWeather]="currentWeather" [timezone]="timezone"></app-weather-summary-bar> -->
+  <!-- search for weather details using location -->
+  <!-- shows current weather -->
+  <app-current-weather *ngIf="currentWeather" [currentWeather]="currentWeather" [location]="location">
+  </app-current-weather>
+</div>

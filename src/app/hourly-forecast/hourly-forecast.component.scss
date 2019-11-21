@@ -1,0 +1,39 @@
+@import "../../styles/abstracts/functions";
+
+.hourly-forecast {
+  &__container {
+    background-image: url("../../assets/images/hourly-forecast.jpg");
+    background-size: cover;
+    mat-expansion-panel {
+      background-color: #424242bd;
+    }
+  }
+
+  &__accordion-container {
+    padding: compute-pixel(4);
+  }
+
+  &__icon {
+    max-height: 35px;
+    max-width: 35px;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: flex-start;
+
+    @media (max-width: 901px) {
+      flex-direction: column;
+    }
+  }
+
+  &__headers .mat-expansion-panel-header-description {
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__headers .mat-expansion-panel-header-title,
+  &__headers .mat-expansion-panel-header-description {
+    flex-basis: 0;
+  }
+}

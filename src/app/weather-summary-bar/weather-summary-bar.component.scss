@@ -1,0 +1,8 @@
+.weather-summary-bar {
+  font-weight: 200;
+  font-size: compute-pixel(2);
+
+  mat-icon {
+    margin: 0 compute-pixel(1);
+  }
+}

@@ -1,0 +1,28 @@
+<mat-card class="current-weather">
+    <mat-toolbar class="current-weather__toolbar"> Current weather for {{ location }}</mat-toolbar>
+    <div class="flex-card">
+        <div class="flex-card__column-1">
+            <div>
+                <div class="flex-card__temperature">{{ currentWeather.temperature }}<span>&#8451;</span></div>
+                <div>{{ currentWeather.summary }}</div>
+            </div>
+            <img src="../../assets/icons/{{currentWeather.icon}}.svg" [alt]="currentWeather.icon">
+        </div>
+
+        <mat-list role="list" class="flex-card__column-2">
+            <mat-list-item role="listitem">Last updated: {{ currentWeather.time * 1000  | date:'shortTime' }}
+            </mat-list-item>
+            <mat-list-item role="listitem">Feels like: {{ currentWeather.apparentTemperature }}<span>&#8451;</span>
+            </mat-list-item>
+            <mat-list-item role="listitem">Rain probability:
+                {{ currentWeather.precipProbability * 100 | number : '1.2-2'}}%
+            </mat-list-item>
+        </mat-list>
+
+        <mat-list role="list" class="flex-card__column-3">
+            <mat-list-item role="listitem">Humidity: {{ currentWeather.humidity  * 100 }}% </mat-list-item>
+            <mat-list-item role="listitem">Wind speed: {{ currentWeather.windSpeed }} m/s </mat-list-item>
+            <mat-list-item role="listitem">Pressure: {{ currentWeather.pressure }} Hectopascals </mat-list-item>
+        </mat-list>
+    </div>
+</mat-card>

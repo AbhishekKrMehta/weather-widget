@@ -1,0 +1,27 @@
+<div class="autocomplete-form__container">
+    <form class="autocomplete-form">
+        <mat-form-field floatLabel="never" class="autocomplete-form__full-width">
+            <input matInput type="text" [matAutocomplete]="auto" [formControl]="searchFormControl"
+                placeholder="Enter location here" />
+            <button mat-button *ngIf="searchFormControl.value" matSuffix mat-icon-button aria-label="Clear"
+                (click)="searchFormControl.setValue('')">
+                <mat-icon>close</mat-icon>
+            </button>
+
+            <mat-error *ngIf="searchFormControl.hasError('minlength') && !searchFormControl.hasError('required')">
+                Please enter at least 3 characters.
+            </mat-error>
+            <mat-error *ngIf="searchFormControl.hasError('required')">
+                This is required field.
+            </mat-error>
+            <mat-autocomplete #auto="matAutocomplete" autoActiveFirstOption>
+                <mat-option *ngFor="let option of searchOptions | async" [value]="option.shortAddress"
+                    (onSelectionChange)="optionSelectionChange(option, $event)" matTooltipShowDelay="1000"
+                    mat-dialog-close>
+                    <span class="mat-body">{{ option.shortAddress }}</span>
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    </form>
+    <mat-spinner *ngIf="showLoader" [diameter]="30"></mat-spinner>
+</div>

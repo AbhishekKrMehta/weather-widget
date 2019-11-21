@@ -1,0 +1,48 @@
+@import "../../styles/abstracts/functions";
+
+.current-weather {
+  max-width: 100%;
+  background-color: rgba(0, 0, 0, 0.459);
+  img {
+    width: 150px;
+  }
+
+  &__toolbar {
+    font-weight: 100;
+    background-color: #21212191;
+  }
+
+  .flex-card {
+    display: flex;
+    justify-content: space-around;
+
+    &__temperature {
+      font-size: 40px;
+      padding-bottom: compute-pixel(4);
+      /* tablet, landscape iPad, lo-res laptops ands desktops */
+      @media (max-width: 961px) {
+        font-size: 30px;
+      }
+    }
+    @media (max-width: 961px) {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  .flex-card__column-1 {
+    display: flex;
+    align-items: center;
+  }
+
+  .flex-card__column-2,
+  .flex-card__column-3 {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    @media (max-width: 961px) {
+      min-width: 200px;
+    }
+  }
+}

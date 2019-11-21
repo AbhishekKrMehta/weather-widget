@@ -1,0 +1,66 @@
+<div class="hourly-forecast__container">
+    <app-weather-summary-bar [currentWeather]="currentWeather" [timezone]="timezone"></app-weather-summary-bar>
+    <div class="hourly-forecast__accordion-container">
+        <mat-accordion class="hourly-forecast__headers">
+            <mat-expansion-panel *ngFor="let hour of hourlyData; index as i; first as isFirst; last as isLast"
+                [expanded]="step === i" (opened)="setStep(i)" hideToggle>
+
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        {{ hour.time * 1000  | date :'HH:mm, dd LLL' }}
+                    </mat-panel-title>
+                    <mat-panel-description>
+                        <span>{{ hour.temperature }}&#8451;</span>
+                        {{ hour.summary }}
+                        <mat-icon [matTooltip]="hour.icon">
+                            <img [src]='getImagePath(hour.icon)' alt="weather-icon" class="hourly-forecast__icon">
+                        </mat-icon>
+                    </mat-panel-description>
+                </mat-expansion-panel-header>
+
+                <div class="hourly-forecast__details">
+
+                    <mat-list role="list">
+                        <mat-list-item role="listitem">Feels like:
+                            {{ hour.apparentTemperature }}<span>&#8451;</span>
+                        </mat-list-item>
+                        <mat-list-item role="listitem">Cloud cover
+                            {{ hour.cloudCover * 100 }}%
+                        </mat-list-item>
+                        <mat-list-item role="listitem">Rain probability:
+                            {{ hour.precipProbability * 100 | number : '1.2-2' }}%
+                        </mat-list-item>
+                    </mat-list>
+
+                    <mat-list role="list">
+                        <mat-list-item role="listitem">Humidity: {{ hour.humidity  * 100 }}%
+                        </mat-list-item>
+                        <mat-list-item role="listitem">Wind speed: {{ hour.windSpeed }} m/s
+                        </mat-list-item>
+                        <mat-list-item role="listitem">Visibility: {{ hour.visibility }} km
+                        </mat-list-item>
+                    </mat-list>
+
+                    <mat-list role="list">
+                        <mat-list-item role="listitem">Dew point: {{ hour.dewPoint }}<span>&#8451;</span>
+                        </mat-list-item>
+                        <mat-list-item role="listitem">Rain intensity: {{ hour.precipIntensity }} mm/h
+                        </mat-list-item>
+
+                        <mat-list-item role="listitem">Pressure: {{ hour.pressure }} Hectopascals
+                        </mat-list-item>
+                    </mat-list>
+
+                </div>
+
+
+                <mat-action-row>
+                    <button *ngIf="!isFirst" mat-raised-button color="basic" (click)="prevHour()">Previous hour</button>
+                    <button *ngIf="!isLast" mat-raised-button color="primary" (click)="nextHour()">Next hour</button>
+                </mat-action-row>
+
+            </mat-expansion-panel>
+
+        </mat-accordion>
+    </div>
+</div>

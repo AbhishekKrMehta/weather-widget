@@ -1,0 +1,31 @@
+@import "../../styles/abstracts/functions";
+
+.footer {
+  height: compute-pixel(7);
+
+  &__developer {
+    display: flex;
+    font-size: 15px;
+    font-weight: 100;
+    color: white;
+    
+    a {
+      color: black;
+      margin-left: compute-pixel(1);
+      text-decoration: none;
+      font-size: 17px;
+    }
+
+    @media (max-width: 501px) {
+      display: none;
+    }
+  }
+
+  &__attribution {
+    display: flex;
+
+    &__image {
+      height: 45px;
+    }
+  }
+}

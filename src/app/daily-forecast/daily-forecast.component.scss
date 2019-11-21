@@ -1,0 +1,42 @@
+.daily-forecast {
+  &__container {
+    background-image: url("../../assets/images/daily-forecast.jpg");
+    background-size: cover;
+    height: 100%;
+
+    .mat-card {
+      background-color: #424242bd;
+    }
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    &__primary-row {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: center;
+
+      @media (max-width: 901px) {
+        flex-direction: column;
+      }
+      &__details {
+        display: flex;
+        flex-direction: column;
+      }
+
+      img {
+        height: 300px;
+        width: 300px;
+      }
+    }
+
+    &__secondary-row {
+      display: flex;
+      width: 100%;
+      justify-content: space-around;
+    }
+  }
+}

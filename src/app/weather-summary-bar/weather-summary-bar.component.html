@@ -1,0 +1,19 @@
+<!-- API provides timestamp in seconds whereas Angular/Javascript accepts millseconds, hence  we multiply it by 1000 -->
+<mat-toolbar class="weather-summary-bar">
+
+    <span *ngIf="!smallScreen" class="global__align-center"> Weather results
+        <mat-icon>keyboard_arrow_right</mat-icon>
+    </span>
+    {{ timezone | uppercase }}
+    <mat-icon>keyboard_arrow_right</mat-icon>
+
+    <span *ngIf="!smallScreen" class="global__align-center">
+        {{ currentWeather.time * 1000  | date:'short' }}
+        <mat-icon> keyboard_arrow_right </mat-icon>
+    </span>
+
+    {{ currentWeather.temperature }}
+    <span>&#8451;</span> <!-- HTML unicode for degree celcius-->
+    <img src="../../assets/icons/{{currentWeather.icon}}.svg" [alt]="currentWeather.icon" height="50px" width="55px" />
+
+</mat-toolbar>

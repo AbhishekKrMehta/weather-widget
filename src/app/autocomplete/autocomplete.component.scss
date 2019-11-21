@@ -1,0 +1,15 @@
+.autocomplete-form {
+  &__container {
+    display: flex;
+
+    mat-spinner {
+      margin: 10px;
+    }
+  }
+  min-width: 150px;
+  width: 100%;
+
+  &__full-width {
+    width: 100%;
+  }
+}

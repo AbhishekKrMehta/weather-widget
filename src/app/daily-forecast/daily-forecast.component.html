@@ -1,0 +1,76 @@
+<div class="daily-forecast__container">
+    <app-weather-summary-bar [currentWeather]="currentWeather" [timezone]="timezone"></app-weather-summary-bar>
+    <mat-card class="daily-forecast__card-container">
+        <mat-tab-group backgroundColor="primary">
+            <mat-tab *ngFor="let day of dailyData">
+                <ng-template mat-tab-label>
+                    {{ day.time * 1000  | date :'d MMM, EEEE' }}
+                </ng-template>
+                <mat-card class="daily-forecast__card">
+                    <div class="daily-forecast__card__primary-row">
+                        <img [src]='getImagePath(day.icon)' alt="weather-icon" class="daily-forecast__icon">
+                        <div class="mat-h3 daily-forecast__card__primary-row__details">
+                            <span>Max temperature:
+                                {{ day.temperatureMax }}<span>&#8451;</span> at
+                                {{ day.temperatureMaxTime * 1000  | date :'shortTime' }}
+                            </span>
+
+                            <span>Min temperature: {{ day.temperatureMin }}<span>&#8451;</span> at
+                                {{ day.temperatureMinTime * 1000  | date :'shortTime' }}
+                            </span>
+
+                            <span>Max rain intensity: {{ day.precipIntensityMax }} mm/h at
+                                {{ day.precipIntensityMaxTime * 1000  | date :'shortTime' }}
+                            </span>
+
+                            <span>{{ day.summary }}</span>
+                        </div>
+                    </div>
+
+                    <div class="daily-forecast__card__secondary-row">
+
+                        <mat-list role="list">
+                            <mat-list-item role="listitem">Rain intensity: {{ day.precipIntensity }} mm/h
+                            </mat-list-item>
+                            <mat-list-item role="listitem">Cloud cover:
+                                {{ day.cloudCover * 100 }}%
+                            </mat-list-item>
+                            <mat-list-item role="listitem">Rain probability:
+                                {{ day.precipProbability * 100 | number : '1.2-2' }}%
+                            </mat-list-item>
+                            <mat-list-item role="listitem">Visibility: {{ day.visibility }} km
+                            </mat-list-item>
+                        </mat-list>
+
+                        <mat-list role="list">
+                            <mat-list-item role="listitem">Humidity: {{ day.humidity  * 100 }}%
+                            </mat-list-item>
+                            <mat-list-item role="listitem">Wind speed: {{ day.windSpeed }} m/s
+                            </mat-list-item>
+                            <mat-list-item role="listitem">Wind gust: {{ day.windGust }} m/s
+                            </mat-list-item>
+                            <mat-list-item role="listitem">Wind gust time:
+                                {{ day.windGustTime  * 1000  | date :'shortTime' }}
+                            </mat-list-item>
+
+                        </mat-list>
+
+                        <mat-list role="list">
+                            <mat-list-item role="listitem">Dew point: {{ day.dewPoint }}<span>&#8451;</span>
+                            </mat-list-item>
+                            <mat-list-item role="listitem">Pressure: {{ day.pressure }} Hectopascals
+                            </mat-list-item>
+                            <mat-list-item role="listitem">Sunrise time:
+                                {{ day.sunriseTime * 1000  | date :'shortTime' }}
+                            </mat-list-item>
+                            <mat-list-item role="listitem">Sunset time:
+                                {{ day.sunsetTime * 1000  | date :'shortTime' }}
+                            </mat-list-item>
+                        </mat-list>
+
+                    </div>
+                </mat-card>
+            </mat-tab>
+        </mat-tab-group>
+    </mat-card>
+</div>
